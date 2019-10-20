@@ -1,6 +1,6 @@
 package io.agileintelligence.fsbasics1backend.controller;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 //Import Shift + Cmd OR Ctrl + o
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 //Help -> Show active keybindings
  
 @RestController
-@RequestMapping("/sampleroute")
+@RequestMapping()
 public class TestRestController {
 	
-	@GetMapping("/iroute")
+	@GetMapping
 	public String testSpringBoot() {
 		return "Test Spring boot";
 	}
