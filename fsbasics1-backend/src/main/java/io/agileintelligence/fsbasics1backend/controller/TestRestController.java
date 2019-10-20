@@ -16,4 +16,19 @@ public class TestRestController {
 		return "Test Spring boot";
 	}
 
+	@GetMapping("/queryp")
+	public String queryParam(@RequestParam(value="whatever")String reqParam){
+		return reqParam;
+	}
+
+	@GetMapping("/{pv}/pathv")
+	public String pathVar(@PathVariable String pv){
+		return pv;
+	}
+
+	@GetMapping("/pathv/{pv}")
+	public String pathVar2(@PathVariable String pv){
+		return pv;
+	}
+
 }
