@@ -4,12 +4,8 @@ package io.agileintelligence.fsbasics1backend.controller;
 import io.agileintelligence.fsbasics1backend.model.ProjectTask;
 import io.agileintelligence.fsbasics1backend.repository.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -22,11 +18,15 @@ public class ProjectTaskController {
 
      */
 
-    private ProjectTaskRepository projectTaskRepository;
+    private final ProjectTaskRepository projectTaskRepository;
 
+    @Autowired //If you have more than 1 constructor
+    //https://docs.spring.io/spring-boot/docs/2.2.0.RELEASE/reference/html/using-spring-boot.html#using-boot-spring-beans-and-dependency-injection
     public ProjectTaskController(ProjectTaskRepository projectTaskRepository) {
         this.projectTaskRepository = projectTaskRepository;
     }
+
+
 
     @PostMapping
     public ResponseEntity createProjectTask(@RequestBody ProjectTask projectTask){
@@ -35,6 +35,11 @@ public class ProjectTaskController {
         //return the saved object with a status code response of 200 (OK)
         //return new ResponseEntity(projectTaskRepository.save(projectTask), HttpStatus.CREATED)
         return ResponseEntity.created(URI.create("/backlog")).body(projectTaskRepository.save(projectTask));
+    }
+
+    @GetMapping
+    public ResponseEntity findAllPTs(){
+        return ResponseEntity.ok().body(projectTaskRepository.findAll());
     }
 
 
