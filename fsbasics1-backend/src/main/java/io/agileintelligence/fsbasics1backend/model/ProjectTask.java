@@ -6,11 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+
 /*
 Create a Table for this object based on the attributes (attribute = column)
 Map this object and its attributes to a table in the DB
  */
+@Entity
 public class ProjectTask {
 
     @Id
