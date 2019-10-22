@@ -1,6 +1,7 @@
 package io.agileintelligence.fsbasics1backend.controller;
 
 
+import io.agileintelligence.fsbasics1backend.exception.ProjectTaskException;
 import io.agileintelligence.fsbasics1backend.model.ProjectTask;
 import io.agileintelligence.fsbasics1backend.repository.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,15 @@ public class ProjectTaskController {
     public ResponseEntity findAllPTs(){
         return ResponseEntity.ok().body(projectTaskRepository.findAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity findPTById(@PathVariable Long id){
+        ProjectTask task = projectTaskRepository.findById(id)
+                .orElseThrow(()-> new ProjectTaskException("Project Task not found"));
+        return ResponseEntity.ok(task);
+    }
+
+    //too much logic in the controller
 
 
 }
