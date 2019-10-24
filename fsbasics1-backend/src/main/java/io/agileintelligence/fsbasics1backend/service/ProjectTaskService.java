@@ -10,7 +10,7 @@ public interface ProjectTaskService<MODEL> {
 
     MODEL save(MODEL model);
 
-    MODEL update (MODEL model);
+    MODEL update (Long id, MODEL model);
 
     void delete (Long id);
 }

@@ -33,8 +33,17 @@ public class ProjectTaskServiceImpl implements ProjectTaskService<ProjectTask> {
     }
 
     @Override
-    public ProjectTask update(ProjectTask projectTask) {
-        return null;
+    public ProjectTask update(Long id, ProjectTask projectTask) {
+
+        return projectTaskRepository.findById(id).map(
+                itemInDB -> {
+                    projectTask.setId(itemInDB.getId());
+                    itemInDB = projectTask;
+                    return projectTaskRepository.save(itemInDB);
+                }
+        ).orElseGet(()->{
+            return projectTaskRepository.save(projectTask);
+        });
     }
 
     @Override

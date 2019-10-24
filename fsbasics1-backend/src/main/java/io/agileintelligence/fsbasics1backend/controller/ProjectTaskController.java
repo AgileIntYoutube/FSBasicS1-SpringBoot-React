@@ -46,7 +46,9 @@ public class ProjectTaskController {
         return ResponseEntity.ok(projectTaskService.findById(id));
     }
 
-    //too much logic in the controller
-
+    @PutMapping("/{id}")
+    public ResponseEntity updatePT(@PathVariable Long id, @RequestBody ProjectTask projectTask){
+        return  ResponseEntity.ok(projectTaskService.update(id, projectTask));
+    }
 
 }
