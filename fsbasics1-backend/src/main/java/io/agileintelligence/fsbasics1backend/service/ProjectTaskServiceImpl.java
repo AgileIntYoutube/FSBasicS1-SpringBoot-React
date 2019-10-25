@@ -48,6 +48,8 @@ public class ProjectTaskServiceImpl implements ProjectTaskService<ProjectTask> {
 
     @Override
     public void delete(Long id) {
-
+        ProjectTask projectTask = projectTaskRepository.findById(id)
+                .orElseThrow(()-> new ProjectTaskException("Project Task not found"));
+        projectTaskRepository.delete(projectTask);
     }
 }

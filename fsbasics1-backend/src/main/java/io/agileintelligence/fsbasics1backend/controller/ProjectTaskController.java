@@ -51,4 +51,10 @@ public class ProjectTaskController {
         return  ResponseEntity.ok(projectTaskService.update(id, projectTask));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletePT(@PathVariable Long id){
+        projectTaskService.delete(id);
+        return ResponseEntity.ok("Project Task deleted");
+    }
+
 }
