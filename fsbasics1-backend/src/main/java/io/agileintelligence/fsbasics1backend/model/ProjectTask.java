@@ -1,10 +1,7 @@
 package io.agileintelligence.fsbasics1backend.model;
 //Project Lombok
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 /*
@@ -12,6 +9,7 @@ Create a Table for this object based on the attributes (attribute = column)
 Map this object and its attributes to a table in the DB
  */
 @Entity
+@Table(name = "project_task")
 public class ProjectTask {
 
     @Id

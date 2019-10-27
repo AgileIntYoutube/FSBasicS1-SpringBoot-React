@@ -46,6 +46,14 @@ public class ProjectTaskServiceImpl implements ProjectTaskService<ProjectTask> {
         });
     }
 
+    /**
+     * @Request: Bell IT implemented these changes pending analysis, design, and impact analysis
+     * @Date_Of_Implementation: Oct xx, 20xx
+     * @Implemented_By: Carlos
+     * @Risks: Unknown, pending additional testing
+     * @Scope: This change is not in scope of our current mandate /SOW
+     * @param id
+     */
     @Override
     public void delete(Long id) {
         ProjectTask projectTask = projectTaskRepository.findById(id)

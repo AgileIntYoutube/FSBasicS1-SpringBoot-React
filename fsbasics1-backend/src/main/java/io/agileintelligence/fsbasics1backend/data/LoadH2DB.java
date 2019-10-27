@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class LoadH2DB {
     /*
     WARNING: This works with H2 because every time that your restart the application, the DB gets wiped out
