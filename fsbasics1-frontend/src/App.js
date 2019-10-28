@@ -1,29 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
+import NavBar from "./components/NavBar";
+import Backlog from "./components/Backlog";
 
-function App() {
-  const title = "Project Task Frontend From JS const";
-  const allGood = true;
-
-  // const test = () => {
-  //   if (allGood) {
-  //     return "confirmed all good";
-  //   }
-  // };
-
-  return (
-    <Fragment>
-      <div className="App">
-        <h1>{title}</h1>
-        <label htmlFor=""></label>
-        <input tabIndex="-1"></input>
-        <p>All good </p>
-        {allGood ? <p>"ternary"</p> : <p>"false"</p>}
-        <div>
-          <p> not cool</p>
-        </div>
-      </div>
-    </Fragment>
-  );
+export class App extends Component {
+  render() {
+    return (
+      <Fragment>
+        <NavBar />
+        <Backlog />
+      </Fragment>
+    );
+  }
 }
 
 export default App;
