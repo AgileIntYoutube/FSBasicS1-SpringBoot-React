@@ -1,5 +1,5 @@
 import React from "react";
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 function ProjectTask(props) {
   const { issueType, description, status, summary } = props.ptprop;
@@ -14,6 +14,8 @@ function ProjectTask(props) {
   );
 }
 
-//ProjectTask.propTypes = {};
+ProjectTask.propTypes = {
+  ptprop: PropTypes.object.isRequired
+};
 
 export default ProjectTask;

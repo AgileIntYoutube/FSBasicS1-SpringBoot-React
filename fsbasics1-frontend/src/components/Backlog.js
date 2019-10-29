@@ -2,43 +2,47 @@ import React, { Component } from "react";
 import ProjectTask from "./ProjectTask";
 
 export class Backlog extends Component {
+  state = {
+    projectTaskList: [
+      {
+        id: 1,
+        issueType: "UserStory-1",
+        summary: "Test User Story in state",
+        description: "This is a test user story",
+        status: "IN_PROGRES"
+      },
+      {
+        id: 2,
+        issueType: "UserStory-2",
+        summary: "Test User Story in state",
+        description: "This is a test user story",
+        status: "IN_PROGRES"
+      },
+      {
+        id: 3,
+        issueType: "UserStory-3",
+        summary: "Test User Story in state",
+        description: "This is a test user story",
+        status: "IN_PROGRES"
+      }
+    ]
+  };
+
   render() {
-    const projectTask = {
-      id: 1,
-      issueType: "UserStory",
-      summary: "Test User Story",
-      description: "This is a test user story",
-      status: "IN_PROGRES"
-    };
+    const { projectTaskList } = this.state;
     return (
       <div className="container mt-3">
         <hr className="mb-5" />
         <div className="alert alert-success text-center" role="alert">
-          <h4 className="alert-heading">Backlog items</h4>
+          <h4 className="alert-heading">Project Tasks!</h4>
         </div>
         <ul className="list-group">
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            <span className="badge badge-success badge-pill">IN PROGRESS</span>
-            <p> Sample 1</p>
-
-            <p>Sample Description 1</p>
-            <p>Story</p>
-          </li>
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            <span className="badge badge-success badge-pill">IN PROGRESS</span>
-            <p> Sample 2</p>
-
-            <p>Sample Description 2</p>
-            <p>Story</p>
-          </li>
-          <li className="list-group-item d-flex justify-content-between align-items-center">
-            <span className="badge badge-success badge-pill">IN PROGRESS</span>
-            <p> Sample 3</p>
-
-            <p className="text-justify">Sample Description 3</p>
-            <p>Story</p>
-          </li>
-          <ProjectTask ptprop={projectTask} />
+          {//Implement a map function
+          //check unique key prop
+          // we are passing state data as props
+          projectTaskList.map(projectTask => (
+            <ProjectTask key={projectTask.id} ptprop={projectTask} />
+          ))}
         </ul>
       </div>
     );
