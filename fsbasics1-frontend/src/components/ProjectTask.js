@@ -1,18 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 
 function ProjectTask(props) {
+  const { issueType, description, status, summary } = props.ptprop;
   return (
     <li className="list-group-item d-flex justify-content-between align-items-center">
-      <span className="badge badge-success badge-pill">IN PROGRESS</span>
-      <p> Sample 4</p>
+      <span className="badge badge-success badge-pill">{status}</span>
+      <p>{summary}</p>
 
-      <p>Sample Description child functional component</p>
-      <p>Story</p>
+      <p>{description}</p>
+      <p>{issueType}</p>
     </li>
   );
 }
 
-ProjectTask.propTypes = {};
+//ProjectTask.propTypes = {};
 
 export default ProjectTask;

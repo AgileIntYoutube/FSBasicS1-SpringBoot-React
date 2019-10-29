@@ -3,6 +3,13 @@ import ProjectTask from "./ProjectTask";
 
 export class Backlog extends Component {
   render() {
+    const projectTask = {
+      id: 1,
+      issueType: "UserStory",
+      summary: "Test User Story",
+      description: "This is a test user story",
+      status: "IN_PROGRES"
+    };
     return (
       <div className="container mt-3">
         <hr className="mb-5" />
@@ -28,10 +35,10 @@ export class Backlog extends Component {
             <span className="badge badge-success badge-pill">IN PROGRESS</span>
             <p> Sample 3</p>
 
-            <p>Sample Description 3</p>
+            <p className="text-justify">Sample Description 3</p>
             <p>Story</p>
           </li>
-          <ProjectTask />
+          <ProjectTask ptprop={projectTask} />
         </ul>
       </div>
     );

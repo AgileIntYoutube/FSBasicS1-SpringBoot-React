@@ -2,11 +2,16 @@ import React, { Component } from "react";
 
 export class NavBar extends Component {
   render() {
+    const { title } = this.props;
+
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-success">
         <a className="navbar-brand" href="/">
-          <i class="fab fa-java mr-2"></i>
-          Backlog View
+          <i className="fab fa-java mr-2"></i>
+          {
+            title
+            //this.props.title
+          }
         </a>
         <button
           className="navbar-toggler"
