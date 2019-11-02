@@ -10,9 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-
+//https://www.baeldung.com/exception-handling-for-rest-with-spring
+//https://www.e4developer.com/2018/09/24/should-you-use-spring-boot-in-your-project/
+//https://www.e4developer.com/2018/08/06/spring-boot-best-practices/
 @RestController
 @RequestMapping("/backlog") //Research backlog in the context of Agile (Scrum)
+@CrossOrigin
 public class ProjectTaskController {
 
     /*

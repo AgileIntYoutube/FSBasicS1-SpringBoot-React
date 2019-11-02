@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+//you can turn this into an arrow function
+//pass the destructuring instead of props
 function ProjectTask(props) {
   const { issueType, description, status, summary } = props.ptprop;
   return (

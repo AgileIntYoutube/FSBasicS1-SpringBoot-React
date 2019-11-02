@@ -1,32 +1,17 @@
 import React, { Component } from "react";
 import ProjectTask from "./ProjectTask";
+import axios from "axios";
 
 export class Backlog extends Component {
   state = {
-    projectTaskList: [
-      {
-        id: 1,
-        issueType: "UserStory-1",
-        summary: "Test User Story in state",
-        description: "This is a test user story",
-        status: "IN_PROGRES"
-      },
-      {
-        id: 2,
-        issueType: "UserStory-2",
-        summary: "Test User Story in state",
-        description: "This is a test user story",
-        status: "IN_PROGRES"
-      },
-      {
-        id: 3,
-        issueType: "UserStory-3",
-        summary: "Test User Story in state",
-        description: "This is a test user story",
-        status: "IN_PROGRES"
-      }
-    ]
+    projectTaskList: []
   };
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8080/backlog")
+      .then(res => this.setState({ projectTaskList: res.data }));
+  }
 
   render() {
     const { projectTaskList } = this.state;
