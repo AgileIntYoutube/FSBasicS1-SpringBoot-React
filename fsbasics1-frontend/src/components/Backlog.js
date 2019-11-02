@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProjectTask from "./ProjectTask";
 import axios from "axios";
+import AddProjectTask from "./AddProjectTask";
 
 export class Backlog extends Component {
   state = {
@@ -17,6 +18,7 @@ export class Backlog extends Component {
     const { projectTaskList } = this.state;
     return (
       <div className="container mt-3">
+        <AddProjectTask />
         <hr className="mb-5" />
         <div className="alert alert-success text-center" role="alert">
           <h4 className="alert-heading">Project Tasks!</h4>
