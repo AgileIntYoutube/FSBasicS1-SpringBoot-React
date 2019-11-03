@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 export class AddProjectTask extends Component {
   state = {
@@ -9,6 +10,10 @@ export class AddProjectTask extends Component {
     status: ""
   };
 
+  static propTypes = {
+    updatePTFunc: PropTypes.func.isRequired
+  };
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -16,8 +21,23 @@ export class AddProjectTask extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    console.log(this.state);
+    axios
+      .post("http://localhost:8080/backlog", this.state)
+      .then(res => this.props.updatePTFunc(res.data))
+      .catch(error => console.log(error.message));
+
+    this.clearStateAfterSubmit();
   };
+
+  clearStateAfterSubmit = () => {
+    this.setState({
+      summary: "",
+      description: "",
+      issueType: "",
+      status: ""
+    });
+  };
+
   render() {
     const { summary, description, issueType, status } = this.state;
 
@@ -92,7 +112,5 @@ export class AddProjectTask extends Component {
     );
   }
 }
-
-AddProjectTask.propTypes = {};
 
 export default AddProjectTask;

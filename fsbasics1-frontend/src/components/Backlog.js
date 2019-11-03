@@ -14,11 +14,19 @@ export class Backlog extends Component {
       .then(res => this.setState({ projectTaskList: res.data }));
   }
 
+  updatePTList = newProjectTask => {
+    console.log(newProjectTask);
+
+    this.setState({
+      projectTaskList: [...this.state.projectTaskList, newProjectTask]
+    });
+  };
+
   render() {
     const { projectTaskList } = this.state;
     return (
       <div className="container mt-3">
-        <AddProjectTask />
+        <AddProjectTask updatePTFunc={this.updatePTList} />
         <hr className="mb-5" />
         <div className="alert alert-success text-center" role="alert">
           <h4 className="alert-heading">Project Tasks!</h4>
