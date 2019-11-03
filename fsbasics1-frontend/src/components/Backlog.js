@@ -15,8 +15,6 @@ export class Backlog extends Component {
   }
 
   updatePTList = newProjectTask => {
-    console.log(newProjectTask);
-
     this.setState({
       projectTaskList: [...this.state.projectTaskList, newProjectTask]
     });
