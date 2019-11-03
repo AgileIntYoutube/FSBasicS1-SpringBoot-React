@@ -10,6 +10,7 @@ Map this object and its attributes to a table in the DB
  */
 @Entity
 @Table(name = "project_task")
+@MappedSuperclass
 public class ProjectTask {
 
     @Id
