@@ -3,17 +3,18 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import classnames from "classnames";
 
-export class AddProjectTask extends Component {
+export class UpdateProjectTask extends Component {
   state = {
-    summary: "",
-    description: "",
-    issueType: "",
-    status: "",
+    id: this.props.projectTask.id,
+    summary: this.props.projectTask.summary,
+    description: this.props.projectTask.description,
+    issueType: this.props.projectTask.issueType,
+    status: this.props.projectTask.status,
     errors: {}
   };
 
   static propTypes = {
-    addToPTList: PropTypes.func.isRequired
+    updatePTFunc: PropTypes.func.isRequired
   };
 
   handleChange = event => {
@@ -23,6 +24,8 @@ export class AddProjectTask extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { summary, issueType, status } = this.state;
+    const { id } = this.props.match.params;
+    console.log("params " + id);
 
     if (summary === "") {
       this.setState({ errors: { summary: "Please select a valid summary" } });
@@ -41,15 +44,16 @@ export class AddProjectTask extends Component {
       return;
     }
 
-    this.postAPICall(this.state);
+    this.putAPICall(this.state, id);
   };
 
-  postAPICall = ptInState => {
+  putAPICall = (ptInState, pathVarId) => {
     axios
-      .post("http://localhost:8080/backlog", ptInState)
+      .put(`http://localhost:8080/backlog/${pathVarId}`, ptInState)
       .then(res => {
-        this.props.addToPTList(res.data);
+        this.props.updatePTList(res.data);
         this.clearStateAfterSubmit();
+        this.props.history.push("/");
       })
       .catch(error => console.log(error.message));
   };
@@ -65,12 +69,12 @@ export class AddProjectTask extends Component {
   };
 
   render() {
-    const { summary, description, issueType, status, errors } = this.state;
+    const {summary, description, issueType, status, errors } = this.state;
 
     return (
       <div className="card mb-1">
         <div className="card-header bg-success text-light">
-          Add Backlog Item
+          Update Backlog Item
         </div>
         <div className="card-body">
           <form onSubmit={this.handleSubmit}>
@@ -150,7 +154,7 @@ export class AddProjectTask extends Component {
             </button>
 
             <button type="submit" className="btn btn-success">
-              Add Backlog Item
+              Update Backlog Item
             </button>
           </form>
         </div>
@@ -159,4 +163,4 @@ export class AddProjectTask extends Component {
   }
 }
 
-export default AddProjectTask;
+export default UpdateProjectTask;

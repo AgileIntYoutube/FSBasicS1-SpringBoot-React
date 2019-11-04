@@ -1,6 +1,10 @@
 p {
-  width: 160px;
+  width: 170px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+span {
+  width: 100px;
 }

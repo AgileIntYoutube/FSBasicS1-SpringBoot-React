@@ -1,30 +1,14 @@
 import React, { Component } from "react";
 import ProjectTask from "./ProjectTask";
-import axios from "axios";
 import AddProjectTask from "./AddProjectTask";
 
+//Add props
 export class Backlog extends Component {
-  state = {
-    projectTaskList: []
-  };
-
-  componentDidMount() {
-    axios
-      .get("http://localhost:8080/backlog")
-      .then(res => this.setState({ projectTaskList: res.data }));
-  }
-
-  updatePTList = newProjectTask => {
-    this.setState({
-      projectTaskList: [...this.state.projectTaskList, newProjectTask]
-    });
-  };
-
   render() {
-    const { projectTaskList } = this.state;
+    const { projectTaskList } = this.props;
     return (
       <div className="container mt-3">
-        <AddProjectTask updatePTFunc={this.updatePTList} />
+        <AddProjectTask addToPTList={this.props.addToPTList} />
         <hr className="mb-5" />
         <div className="alert alert-success text-center" role="alert">
           <h4 className="alert-heading">Project Tasks!</h4>
@@ -34,7 +18,12 @@ export class Backlog extends Component {
           //check unique key prop
           // we are passing state data as props
           projectTaskList.map(projectTask => (
-            <ProjectTask key={projectTask.id} ptprop={projectTask} />
+            <ProjectTask
+              key={projectTask.id}
+              ptprop={projectTask}
+              findById={this.props.loadProjectTaskToForm}
+              deletePTFromList={this.props.deletePTFromList}
+            />
           ))}
         </ul>
       </div>
